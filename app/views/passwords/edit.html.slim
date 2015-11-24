@@ -1,0 +1,31 @@
+h2 Form
+= form_tag( passwords_path ) do
+  = hidden_field_tag :list, @passwords.words
+  label Word
+  = text_field_tag :word
+  label Matches
+  = text_field_tag :matches, '', size: 2
+  = submit_tag
+
+h2 List
+ul
+  - @passwords.targets.each do |target|
+    li
+      = target
+      | &nbsp;/&nbsp;
+      = @passwords.total( target )
+
+h2 Matrix
+table
+  tr
+    th
+    - @passwords.list.each do |col|
+      th= col
+    th Total
+
+  - @passwords.list.each do |row|
+    tr
+      th= row
+      - @passwords.list.each do |target|
+        td= @passwords.matches( row, target )
+      td= @passwords.total( row )

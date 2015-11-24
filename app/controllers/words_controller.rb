@@ -1,4 +1,0 @@
-class WordsController < ApplicationController
-
-
-end
