@@ -1,3 +1,7 @@
+
+- unless @passwords.valid?
+  h2.error Invalid Word List
+
 = form_tag passwords_path do
-  = text_field_tag :list, 'beds core lake wake side cool odds fire', size: 80
+  = text_field_tag :list, @passwords.words, size: 80, :autofocus=>true
   = submit_tag

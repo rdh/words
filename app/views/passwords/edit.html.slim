@@ -1,19 +1,25 @@
+= link_to 'Start New', passwords_path
+
 h2 Form
 = form_tag( passwords_path ) do
   = hidden_field_tag :list, @passwords.words
+
   label Word
-  = text_field_tag :word
+  = text_field_tag :word, @passwords.targets.first
+
   label Matches
-  = text_field_tag :matches, '', size: 2
+  = text_field_tag :matches, '', size: 2, :autofocus => true
   = submit_tag
 
-h2 List
+h2 Targets
 ul
   - @passwords.targets.each do |target|
     li
       = target
       | &nbsp;/&nbsp;
-      = @passwords.total( target )
+      = @passwords.total(target)
+
+
 
 h2 Matrix
 table

@@ -9,8 +9,8 @@ class Passwords
   end
 
   def list=(list)
-    @list = list.split( /\s/ ).sort
-    @list.each { |word| raise 'Mismatched lengths' if word.length != @list[0].length }
+    @list = []
+    @list = list.split( /\s/ ).sort if list
     build_counts
   end
 
@@ -62,6 +62,11 @@ class Passwords
 
   def total( word )
     return @counts[ word ][ :total ]
+  end
+
+  def valid?
+    return true if @list.empty?
+    return @list.select { |word| word.length != @list[0].length }.empty?
   end
 
   def words
