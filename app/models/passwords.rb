@@ -10,7 +10,7 @@ class Passwords
 
   def list=(list)
     @list = []
-    @list = list.split( /\s/ ).sort if list
+    @list = list.split( /\s/ ) if list
     build_counts
   end
 
@@ -58,6 +58,10 @@ class Passwords
 
   def matches( word, target )
     return @counts[ word ][ target ]
+  end
+
+  def sorted
+    return @list.sort
   end
 
   def total( word )

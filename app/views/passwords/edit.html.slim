@@ -20,18 +20,18 @@ ul
       = @passwords.total(target)
 
 
-
+- sorted = @passwords.sorted
 h2 Matrix
 table
   tr
     th
-    - @passwords.list.each do |col|
+    - sorted.each do |col|
       th= col
     th Total
 
-  - @passwords.list.each do |row|
+  - sorted.each do |row|
     tr
       th= row
-      - @passwords.list.each do |target|
+      - sorted.each do |target|
         td= @passwords.matches( row, target )
       td= @passwords.total( row )
