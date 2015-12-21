@@ -1,6 +1,8 @@
 
 - unless @passwords.valid?
-  h2.error Invalid Word List
+  h2.error
+    | Invalid Word List:
+    = @passwords.invalid
 
 = form_tag passwords_path do
   = text_field_tag :list, @passwords.words, size: 80, :autofocus=>true

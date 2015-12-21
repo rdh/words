@@ -45,6 +45,11 @@ class Passwords
     return count
   end
 
+  def invalid
+    average_length = (@list.map { |word| word.length }.inject(:+).to_f / @list.size).round
+    return @list.select { |word| word.length != average_length }
+  end
+
   def remove_mismatches( word, matches )
     return unless word.present?
 
